@@ -1,0 +1,719 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Sano Med Spa — Pelvic Floor Reset | See If You Qualify</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<!-- Preview fallbacks: Playfair Display stands in for The Seasons/Didot headings; Inter stands in for Avenir Next.
+     Host Sano's real fonts (Merona Island Bold, Avenir Next LT Pro, The Seasons, Didot) via @font-face for production. -->
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&family=Cormorant+Garamond:ital,wght@0,500;1,500&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+/* ============================================================
+   BRAND TOKENS — SWAP THESE HEXES FOR SANO'S EXACT COLORS
+   ============================================================ */
+:root{
+  /* SANO BRAND — exact colors from client: sage #7D7F70 + cream #E6DFD3 */
+  --brand-ink:#2B2C26;        /* warm charcoal text (derived) */
+  --brand-plum:#7D7F70;       /* PRIMARY — Sano sage #7D7F70 */
+  --brand-plum-deep:#5F6154;  /* darker sage for hovers (derived) */
+  --brand-rose:#9A9B88;       /* soft sage accent (derived from primary) */
+  --brand-blush:#E6DFD3;      /* Sano cream #E6DFD3 — panels/soft fills */
+  --brand-cream:#F4F1EA;      /* page background (lightened from cream) */
+  --brand-gold:#B08D57;       /* warm accent for the $99 CTA + stars (optional — see note) */
+  --brand-gold-deep:#957541;
+  --brand-line:#DBD4C7;       /* hairline (derived) */
+  --brand-muted:#585950;      /* muted sage-gray text (derived, darkened for readability) */
+  --white:#ffffff;
+  --ok:#5F7355;               /* success in a sage key, not clinical green */
+  --radius:16px;
+  --shadow-sm:0 2px 10px rgba(43,44,38,.06);
+  --shadow-md:0 12px 40px rgba(43,44,38,.10);
+  --shadow-lg:0 24px 70px rgba(43,44,38,.15);
+  /* Real Sano fonts first, elegant web fallbacks for this preview */
+  --font-head:'The Seasons','Didot','Playfair Display',Georgia,serif;
+  --font-body:'Avenir Next LT Pro','Avenir Next','Inter',system-ui,sans-serif;
+  --font-display:'Merona Island','Playfair Display',var(--font-head);
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{
+  font-family:var(--font-body);
+  color:var(--brand-ink);
+  background:var(--brand-cream);
+  font-size:16.5px;
+  line-height:1.62;
+  -webkit-font-smoothing:antialiased;
+}
+img{max-width:100%;display:block}
+.wrap{max-width:1200px;margin:0 auto;padding:0 20px}
+
+/* ---------- Announcement bar ---------- */
+.topbar{
+  background:var(--brand-plum);color:#fff;text-align:center;
+  font-size:13px;letter-spacing:.02em;padding:9px 16px;font-weight:500;
+}
+.topbar b{color:var(--brand-gold);font-weight:700}
+
+/* ---------- Header ---------- */
+.hdr{background:var(--brand-cream);border-bottom:1px solid var(--brand-line)}
+.hdr .wrap{display:flex;align-items:center;justify-content:space-between;height:64px}
+.logo{font-family:var(--font-head);font-weight:600;font-size:22px;letter-spacing:.01em;color:var(--brand-ink)}
+.logo span{color:var(--brand-rose)}
+.hdr .loc{font-size:13px;color:var(--brand-muted);display:flex;align-items:center;gap:6px}
+.hdr .loc svg{width:14px;height:14px;stroke:var(--brand-rose)}
+
+/* ---------- OFFER HERO ---------- */
+.hero{padding:24px 0 22px;text-align:center;background:linear-gradient(180deg,var(--brand-blush),var(--brand-cream));border-bottom:1px solid var(--brand-line)}
+.hero-inner{max-width:680px;margin:0 auto}
+.hero-eyebrow{
+  display:inline-flex;align-items:center;gap:7px;
+  background:var(--white);color:var(--brand-plum-deep);border:1px solid var(--brand-line);
+  font-size:11px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;
+  padding:5px 12px;border-radius:100px;margin-bottom:12px;
+}
+.hero-eyebrow .dot{width:6px;height:6px;border-radius:50%;background:var(--brand-plum)}
+.hero h1{
+  font-family:var(--font-head);font-weight:600;color:var(--brand-ink);
+  font-size:clamp(26px,3.2vw,38px);line-height:1.08;letter-spacing:-.01em;
+  max-width:18ch;margin:0 auto 10px;
+}
+.hero h1 em{font-style:italic;color:var(--brand-plum-deep)}
+.hero-price{display:inline-flex;align-items:baseline;gap:9px;margin-bottom:10px}
+.hero-price s{font-size:19px;color:var(--brand-muted);font-weight:500}
+.hero-price b{font-family:var(--font-head);font-size:36px;font-weight:600;color:var(--brand-plum-deep);line-height:1}
+.hero-price span{font-size:13px;color:var(--brand-muted);font-weight:600;letter-spacing:.02em}
+.hero-sub{font-size:15.5px;color:var(--brand-ink);max-width:50ch;margin:0 auto 16px;line-height:1.5}
+.hero-sub b{font-weight:700}
+.hero-cta{
+  display:inline-flex;align-items:center;gap:9px;background:var(--brand-gold);color:#3a2c10;
+  font-family:var(--font-body);font-weight:700;font-size:15.5px;padding:13px 30px;border-radius:100px;
+  text-decoration:none;box-shadow:0 6px 18px rgba(194,154,75,.38);animation:pulse 2.1s infinite;
+}
+.hero-cta:hover{background:var(--brand-gold-deep)}
+.hero-trust{display:flex;align-items:center;justify-content:center;gap:12px;margin-top:14px;flex-wrap:wrap;font-size:13px;color:var(--brand-muted)}
+.hero-trust b{color:var(--brand-plum-deep);font-family:var(--font-head);font-weight:600;font-size:14px;margin-right:3px}
+.hero-trust i{width:4px;height:4px;border-radius:50%;background:var(--brand-line);display:inline-block}
+
+/* ---------- VIDEO + QUIZ SPLIT ---------- */
+.split-sec{padding:40px 0 24px}
+.split{display:grid;grid-template-columns:1fr 1fr;gap:40px;align-items:start}
+
+/* ----- LEFT: written explainer column ----- */
+.vsl-col{}
+.quiz-col{position:sticky;top:24px;align-self:start}
+.ex-eyebrow{font-size:12px;font-weight:700;letter-spacing:.09em;text-transform:uppercase;color:var(--brand-rose);margin-bottom:12px}
+.explainer .ex-h{font-family:var(--font-head);font-size:clamp(23px,2.5vw,30px);font-weight:600;line-height:1.15;margin-bottom:14px;max-width:20ch}
+.explainer .ex-h em{font-style:italic;color:var(--brand-plum-deep)}
+.explainer h3{font-family:var(--font-body);font-weight:700;font-size:17px;margin:22px 0 6px;color:var(--brand-ink)}
+.explainer p{font-size:15.5px;color:var(--brand-ink);line-height:1.68;margin-bottom:12px}
+.explainer p b{color:var(--brand-plum-deep)}
+.explainer .ex-close{margin-top:16px;font-size:16px}
+.video{
+  position:relative;border-radius:var(--radius);overflow:hidden;
+  background:linear-gradient(150deg,var(--brand-plum),#3f2c33);
+  aspect-ratio:16/10;box-shadow:var(--shadow-md);cursor:pointer;
+  display:flex;align-items:center;justify-content:center;
+}
+.video .grain{position:absolute;inset:0;opacity:.25;background:
+  radial-gradient(circle at 30% 30%,rgba(255,255,255,.18),transparent 40%),
+  radial-gradient(circle at 75% 70%,rgba(194,154,75,.28),transparent 45%);}
+.video .play{
+  position:relative;z-index:2;width:82px;height:82px;border-radius:50%;
+  background:rgba(255,255,255,.94);display:flex;align-items:center;justify-content:center;
+  box-shadow:0 10px 30px rgba(0,0,0,.28);transition:transform .2s ease;
+}
+.video:hover .play{transform:scale(1.06)}
+.video .play svg{width:30px;height:30px;margin-left:4px;fill:var(--brand-plum)}
+.video .tag{
+  position:absolute;left:14px;top:14px;z-index:2;background:rgba(0,0,0,.42);
+  color:#fff;font-size:12px;font-weight:600;padding:6px 12px;border-radius:100px;
+  display:flex;align-items:center;gap:7px;backdrop-filter:blur(4px);
+}
+.video .tag .rec{width:8px;height:8px;border-radius:50%;background:#ff5a5a;animation:blink 1.4s infinite}
+@keyframes blink{50%{opacity:.3}}
+.video .sound{
+  position:absolute;right:14px;bottom:14px;z-index:2;background:rgba(0,0,0,.42);
+  color:#fff;font-size:12px;font-weight:600;padding:7px 13px;border-radius:100px;
+  display:flex;align-items:center;gap:7px;backdrop-filter:blur(4px);
+}
+.video .sound svg{width:14px;height:14px;stroke:#fff;fill:none}
+.video .cap{position:absolute;left:0;right:0;bottom:56px;z-index:2;text-align:center;padding:0 30px}
+.video .cap span{background:rgba(0,0,0,.55);color:#fff;font-size:14px;font-weight:600;padding:5px 12px;border-radius:8px;line-height:1.7;box-decoration-break:clone;-webkit-box-decoration-break:clone}
+.vsl-note{margin-top:10px;font-size:12.5px;color:var(--brand-muted);text-align:center}
+
+.trust-row{display:flex;gap:10px;margin-top:20px;flex-wrap:wrap}
+.trust{
+  flex:1;min-width:150px;background:var(--white);border:1px solid var(--brand-line);
+  border-radius:12px;padding:13px 15px;box-shadow:var(--shadow-sm);
+}
+.trust b{display:block;font-family:var(--font-head);font-size:20px;font-weight:600;color:var(--brand-plum)}
+.trust small{font-size:12px;color:var(--brand-muted);line-height:1.3;display:block;margin-top:2px}
+
+.as-seen{margin-top:20px;display:flex;align-items:center;gap:14px;flex-wrap:wrap}
+.as-seen .chk{display:flex;align-items:center;gap:8px;font-size:13px;color:var(--brand-ink);font-weight:500}
+.chk .ck{width:18px;height:18px;border-radius:50%;background:var(--brand-blush);flex:0 0 auto;display:flex;align-items:center;justify-content:center}
+.chk .ck svg{width:11px;height:11px;stroke:var(--brand-plum);stroke-width:3;fill:none}
+
+/* ----- RIGHT: quiz column ----- */
+.quiz-col{}
+.quiz-card{
+  background:var(--white);border:1px solid var(--brand-line);border-radius:var(--radius);
+  box-shadow:var(--shadow-lg);overflow:hidden;
+}
+.quiz-head{padding:22px 26px 0}
+.quiz-kicker{font-size:12px;font-weight:700;letter-spacing:.09em;text-transform:uppercase;color:var(--brand-rose);margin-bottom:6px}
+.quiz-title{font-family:var(--font-body);font-size:20px;font-weight:700;line-height:1.25;letter-spacing:-.01em}
+.quiz-meta{font-size:13px;color:var(--brand-muted);margin-top:6px;display:flex;align-items:center;gap:8px}
+.quiz-meta svg{width:14px;height:14px;stroke:var(--brand-rose);fill:none}
+
+.progress{height:6px;background:var(--brand-blush);border-radius:100px;margin:18px 26px 0;overflow:hidden}
+.progress .bar{height:100%;width:12%;background:linear-gradient(90deg,var(--brand-rose),var(--brand-plum));border-radius:100px;transition:width .4s cubic-bezier(.4,0,.2,1)}
+.step-count{font-size:12px;color:var(--brand-muted);padding:8px 26px 0;font-weight:500}
+
+.quiz-body{padding:16px 26px 26px}
+.step{display:none;animation:fade .35s ease}
+.step.active{display:block}
+@keyframes fade{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}
+.q{font-family:var(--font-body);font-size:19px;font-weight:700;line-height:1.32;margin-bottom:4px;color:var(--brand-ink);letter-spacing:-.01em}
+.q-help{font-size:13.5px;color:var(--brand-muted);margin-bottom:16px}
+
+/* answer cards — vertical stack ONLY */
+.opts{display:flex;flex-direction:column;gap:10px}
+.opt{
+  display:flex;align-items:center;gap:13px;width:100%;text-align:left;
+  background:var(--white);border:1.5px solid var(--brand-line);border-radius:12px;
+  padding:15px 16px;font-family:var(--font-body);font-size:15px;font-weight:500;color:var(--brand-ink);
+  cursor:pointer;transition:all .16s ease;
+}
+.opt:hover{border-color:var(--brand-rose);background:var(--brand-blush);transform:translateY(-1px)}
+.opt.sel{border-color:var(--brand-plum);background:var(--brand-blush);box-shadow:0 0 0 3px rgba(110,75,87,.12)}
+.opt .box{width:22px;height:22px;border-radius:50%;border:2px solid var(--brand-line);flex:0 0 auto;display:flex;align-items:center;justify-content:center;transition:all .16s}
+.opt.sel .box{border-color:var(--brand-plum);background:var(--brand-plum)}
+.opt .box svg{width:12px;height:12px;stroke:#fff;stroke-width:3;fill:none;opacity:0;transition:opacity .16s}
+.opt.sel .box svg{opacity:1}
+
+.multi-hint{font-size:12.5px;color:var(--brand-muted);margin-top:12px;text-align:center}
+
+/* nav */
+.quiz-nav{display:flex;align-items:center;justify-content:space-between;margin-top:20px}
+.back-btn{background:none;border:none;color:var(--brand-muted);font-size:14px;font-weight:600;cursor:pointer;display:inline-flex;align-items:center;gap:6px;padding:8px;visibility:hidden}
+.back-btn svg{width:15px;height:15px;stroke:currentColor;fill:none;stroke-width:2}
+.next-btn{
+  background:var(--brand-plum);color:#fff;border:none;border-radius:100px;
+  padding:13px 26px;font-family:var(--font-body);font-size:15px;font-weight:700;cursor:pointer;
+  display:inline-flex;align-items:center;gap:8px;transition:all .18s;
+}
+.next-btn:hover{background:#583b45}
+.next-btn:disabled{opacity:.4;cursor:not-allowed}
+.next-btn svg{width:16px;height:16px;stroke:#fff;fill:none;stroke-width:2.5}
+
+/* gate form */
+.field{margin-bottom:13px}
+.field label{display:block;font-size:13px;font-weight:600;margin-bottom:6px}
+.field input{
+  width:100%;border:1.5px solid var(--brand-line);border-radius:11px;
+  padding:13px 15px;font-family:var(--font-body);font-size:15px;background:var(--brand-cream);
+}
+.field input:focus{outline:none;border-color:var(--brand-plum);background:#fff}
+.gate-privacy{font-size:12px;color:var(--brand-muted);margin-top:6px;display:flex;align-items:flex-start;gap:7px;line-height:1.4}
+.gate-privacy svg{width:14px;height:14px;stroke:var(--ok);fill:none;flex:0 0 auto;margin-top:2px}
+
+/* results / booking */
+.result-badge{display:inline-flex;align-items:center;gap:8px;background:rgba(95,115,85,.1);color:var(--ok);font-size:13px;font-weight:700;padding:7px 14px;border-radius:100px;margin-bottom:14px}
+.result-badge svg{width:15px;height:15px;stroke:var(--ok);fill:none;stroke-width:2.5}
+.offer-box{background:var(--brand-blush);border:1px dashed var(--brand-rose);border-radius:14px;padding:18px;margin:16px 0;text-align:center}
+.offer-box .price{font-family:var(--font-head);font-size:38px;font-weight:600;color:var(--brand-plum);line-height:1}
+.offer-box .price s{font-size:20px;color:var(--brand-muted);font-weight:400;margin-right:8px}
+.offer-box .price small{font-size:15px;color:var(--brand-muted);font-weight:500}
+.offer-box .oline{font-size:13.5px;color:var(--brand-ink);margin-top:8px;font-weight:500}
+.sell{background:var(--white);border:1px solid var(--brand-line);border-radius:14px;padding:18px;margin-top:4px}
+.sell-head{font-family:var(--font-head);font-size:18px;font-weight:600;margin-bottom:6px}
+.sell-head b{color:var(--brand-plum)}
+.sell-lead{font-size:13.5px;color:var(--brand-muted);margin-bottom:14px;line-height:1.5}
+.incl{display:flex;flex-direction:column;gap:11px}
+.incl .chk{align-items:flex-start;font-size:14px;font-weight:500;line-height:1.4}
+.incl .chk .ck{margin-top:1px}
+.calendly-placeholder{background:var(--brand-cream);border:2px dashed var(--brand-line);border-radius:12px;min-height:200px;display:flex;flex-direction:column;align-items:center;justify-content:center;color:var(--brand-muted);font-size:14px;gap:6px;text-align:center;padding:20px}
+.calendly-placeholder b{color:var(--brand-ink);font-size:15px}
+.pay-cta{
+  width:100%;margin-top:14px;background:var(--brand-gold);color:#3a2c10;border:none;border-radius:100px;
+  padding:16px;font-family:var(--font-body);font-size:16px;font-weight:700;cursor:pointer;
+  box-shadow:0 8px 24px rgba(194,154,75,.4);animation:pulse 2.1s infinite;
+}
+@keyframes pulse{0%{box-shadow:0 0 0 0 rgba(194,154,75,.5)}70%{box-shadow:0 0 0 16px rgba(194,154,75,0)}100%{box-shadow:0 0 0 0 rgba(194,154,75,0)}}
+.reassure{display:flex;gap:16px;justify-content:center;margin-top:14px;flex-wrap:wrap}
+.reassure span{font-size:12px;color:var(--brand-muted);display:flex;align-items:center;gap:5px}
+.reassure svg{width:13px;height:13px;stroke:var(--ok);fill:none;stroke-width:2}
+
+/* ---------- SOCIAL PROOF STRIP ---------- */
+.proof{background:var(--white);border-top:1px solid var(--brand-line);border-bottom:1px solid var(--brand-line);padding:40px 0}
+.proof h2{font-family:var(--font-head);font-size:26px;font-weight:600;text-align:center;margin-bottom:6px}
+.proof .psub{text-align:center;color:var(--brand-muted);font-size:14px;margin-bottom:28px}
+.tgrid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+.tcard{background:var(--brand-cream);border:1.5px dashed var(--brand-gold);border-radius:14px;padding:20px;position:relative}
+.tcard .ph-badge{position:absolute;top:-9px;left:16px;background:var(--brand-gold);color:#3a2c10;font-size:10px;font-weight:800;letter-spacing:.06em;padding:3px 9px;border-radius:100px;text-transform:uppercase}
+.tcard .stars{color:var(--brand-gold);font-size:15px;letter-spacing:2px;margin-bottom:8px}
+.tcard p{font-size:14px;color:var(--brand-ink);line-height:1.55;font-style:italic}
+.tcard .who{font-size:13px;color:var(--brand-muted);margin-top:10px;font-weight:600}
+
+/* ---------- HOW IT WORKS ---------- */
+.how{padding:52px 0}
+.how h2{font-family:var(--font-head);font-size:clamp(24px,3vw,32px);font-weight:600;text-align:center;max-width:20ch;margin:0 auto 8px}
+.how .hsub{text-align:center;color:var(--brand-muted);font-size:15px;max-width:52ch;margin:0 auto 34px}
+.steps{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+.scard{background:var(--white);border:1px solid var(--brand-line);border-radius:var(--radius);padding:26px;box-shadow:var(--shadow-sm)}
+.scard .num{font-family:var(--font-head);font-size:15px;font-weight:700;color:var(--brand-rose);width:38px;height:38px;border-radius:50%;background:var(--brand-blush);display:flex;align-items:center;justify-content:center;margin-bottom:14px}
+.scard h3{font-family:var(--font-head);font-size:19px;font-weight:600;margin-bottom:7px}
+.scard p{font-size:14px;color:var(--brand-muted);line-height:1.55}
+
+/* ---------- CANDIDACY ---------- */
+.cand{background:var(--brand-blush);padding:52px 0}
+.cand-grid{display:grid;grid-template-columns:1fr 1fr;gap:22px}
+.cand-box{background:#fff;border-radius:var(--radius);padding:26px;box-shadow:var(--shadow-sm)}
+.cand-box h3{font-family:var(--font-head);font-size:19px;font-weight:600;margin-bottom:16px;display:flex;align-items:center;gap:10px}
+.cand-box h3 .ic{width:30px;height:30px;border-radius:50%;display:flex;align-items:center;justify-content:center;flex:0 0 auto}
+.cand-box.good h3 .ic{background:rgba(95,115,85,.12)}
+.cand-box.good h3 .ic svg{stroke:var(--ok)}
+.cand-box.no h3 .ic{background:rgba(180,90,90,.12)}
+.cand-box.no h3 .ic svg{stroke:#b45a5a}
+.cand-box h3 .ic svg{width:16px;height:16px;fill:none;stroke-width:2.5}
+.cand-box li{list-style:none;font-size:14.5px;color:var(--brand-ink);padding:8px 0 8px 28px;position:relative;border-bottom:1px solid var(--brand-line)}
+.cand-box li:last-child{border-bottom:none}
+.cand-box li::before{content:"";position:absolute;left:0;top:14px;width:16px;height:16px;border-radius:50%}
+.cand-box.good li::before{background:rgba(95,115,85,.15)}
+.cand-box.no li::before{background:rgba(180,90,90,.15)}
+
+/* ---------- FAQ ---------- */
+.faq{padding:52px 0}
+.faq h2{font-family:var(--font-head);font-size:clamp(24px,3vw,32px);font-weight:600;text-align:center;margin-bottom:28px}
+.faq-list{max-width:760px;margin:0 auto}
+.faq-item{background:#fff;border:1px solid var(--brand-line);border-radius:12px;margin-bottom:12px;overflow:hidden}
+.faq-q{padding:18px 22px;font-weight:600;font-size:15.5px;cursor:pointer;display:flex;justify-content:space-between;align-items:center;gap:16px}
+.faq-q svg{width:18px;height:18px;stroke:var(--brand-rose);fill:none;stroke-width:2.5;transition:transform .25s;flex:0 0 auto}
+.faq-item.open .faq-q svg{transform:rotate(45deg)}
+.faq-a{max-height:0;overflow:hidden;transition:max-height .3s ease;padding:0 22px}
+.faq-item.open .faq-a{max-height:320px;padding:0 22px 20px}
+.faq-a p{font-size:14.5px;color:var(--brand-muted);line-height:1.6}
+
+/* ---------- FINAL CTA ---------- */
+.final{background:var(--brand-plum);color:#fff;padding:56px 0;text-align:center}
+.final h2{font-family:var(--font-head);font-size:clamp(26px,3.4vw,38px);font-weight:600;max-width:18ch;margin:0 auto 14px}
+.final p{color:rgba(255,255,255,.82);font-size:16px;max-width:46ch;margin:0 auto 26px}
+.final .btn{background:var(--brand-gold);color:#3a2c10;border:none;border-radius:100px;padding:16px 40px;font-family:var(--font-body);font-size:16px;font-weight:700;cursor:pointer;box-shadow:0 8px 24px rgba(194,154,75,.4);animation:pulse 2.1s infinite}
+.final .tiny{margin-top:18px;font-size:12.5px;color:rgba(255,255,255,.6)}
+
+/* ---------- FOOTER ---------- */
+.ft{background:var(--brand-ink);color:rgba(255,255,255,.6);padding:30px 0;font-size:12.5px;text-align:center;line-height:1.7}
+.ft b{color:#fff;font-family:var(--font-head);font-weight:600;font-size:15px}
+.ft .disc{max-width:800px;margin:12px auto 0;font-size:11px;color:rgba(255,255,255,.4)}
+
+/* ---------- RESPONSIVE ---------- */
+@media(max-width:900px){
+  .split{grid-template-columns:1fr;gap:24px}
+  .vsl-col{position:static}
+  .quiz-col{position:static}
+  .hero h1{max-width:100%}
+  .hero-sub{max-width:100%}
+  .tgrid{grid-template-columns:1fr}
+  .steps{grid-template-columns:1fr}
+  .cand-grid{grid-template-columns:1fr}
+  .hdr .loc{display:none}
+}
+@media(max-width:560px){
+  .hero{padding:26px 0 30px}
+  .hero-eyebrow{font-size:11px;letter-spacing:.05em;padding:6px 12px}
+  .hero h1{font-size:clamp(28px,8.4vw,38px)}
+  .hero-price b{font-size:44px}
+  .hero-price s{font-size:20px}
+  .hero-cta{width:100%;justify-content:center;padding:16px 20px}
+  .hero-trust{gap:8px 12px;font-size:13px}
+  .split-sec{padding:26px 0 16px}
+  .quiz-body{padding:14px 18px 22px}
+  .quiz-head{padding:18px 18px 0}
+  .progress{margin:16px 18px 0}
+  .step-count{padding:8px 18px 0}
+  .quiz-title{font-size:19px}
+  .proof,.how,.cand,.faq{padding:38px 0}
+  .final{padding:44px 0}
+  .offer-box .price{font-size:32px}
+  .sell{padding:16px}
+}
+@media(max-width:360px){
+  .hero-price b{font-size:38px}
+  .hero h1{font-size:26px}
+}
+</style>
+</head>
+<body>
+
+<div class="topbar">Limited new-client spots this month · <b>First session $99</b> (reg. $250) — see if you qualify below</div>
+
+<header class="hdr">
+  <div class="wrap">
+    <div class="logo">Sano<span>.</span> Med Spa</div>
+    <div class="loc">
+      <svg viewBox="0 0 24 24" fill="none" stroke-width="2"><path d="M12 21s-7-6.4-7-11a7 7 0 0114 0c0 4.6-7 11-7 11z"/><circle cx="12" cy="10" r="2.5"/></svg>
+      Fairview Heights, IL · Metro-East STL
+    </div>
+  </div>
+</header>
+
+<!-- ================= HERO / SPLIT ================= -->
+<section class="hero">
+  <div class="wrap hero-inner">
+    <div class="hero-eyebrow"><span class="dot"></span> Non-surgical pelvic floor restoration</div>
+    <h1>Rebuild your core, control &amp; <em>confidence.</em></h1>
+    <div class="hero-price"><s>$250</s><b>$99</b><span>FIRST SESSION</span></div>
+    <p class="hero-sub">A 28-minute, fully-clothed treatment that reaches the deep muscles behind bladder control, core strength, and intimacy — no surgery, no downtime.</p>
+    <a href="#quizsec" class="hero-cta">Take the 60-second quiz →</a>
+    <div class="hero-trust">
+      <span><b>7 Tesla</b> most powerful tech</span><i></i>
+      <span><b>28 min</b> fully clothed</span><i></i>
+      <span><b>MD-led</b> Dr. Mahtani, MD</span>
+    </div>
+  </div>
+</section>
+
+<!-- ================= VIDEO + QUIZ SPLIT ================= -->
+<section class="split-sec" id="quizsec">
+  <div class="wrap split">
+      <!-- LEFT: sticky VSL -->
+      <div class="vsl-col">
+        <div class="explainer">
+          <div class="ex-eyebrow">Read this first</div>
+          <h2 class="ex-h">That leak isn't the real problem — <em>it's a warning light.</em></h2>
+          <p>It's not because you're getting older, and it's not because you didn't do enough Kegels. <b>It is not your fault.</b></p>
+
+          <h3>Here's the real problem.</h3>
+          <p>Deep inside your body is a hammock of muscles — your pelvic floor. It holds up your bladder and your core. After childbirth, menopause, and the years in between, those muscles weaken — and the leak is simply the first sign they've started to give way. <b>A weakening pelvic floor doesn't repair itself. Left alone, it only gets weaker.</b></p>
+          <p>And little by little, you shrink your life to hide it — the workout you skip, the trip you talk yourself out of, every outing planned around the nearest bathroom. Each year, it quietly takes a little more of your core, your confidence, and your freedom.</p>
+
+          <h3>So why hasn't anything worked?</h3>
+          <p>Those deep muscles are nearly impossible to activate on your own. Your Kegels squeeze the muscles you can feel — while the ones that actually matter barely move. <b>It was never a willpower problem. It's anatomy.</b></p>
+
+          <h3>But those muscles can be reached.</h3>
+          <p>It's the nuVIVE Pelvic Floor Reset. You sit down, fully clothed, and in one 28-minute session, nuVIVE triggers thousands of contractions deep in the pelvic floor — reaching the exact muscles your Kegels never could. It's a proven, medically-backed therapy: no surgery, no downtime.</p>
+          <p class="ex-close"><b>It was never your fault — but now, it's your turn.</b> Take the quiz to see if you're a candidate. →</p>
+        </div>
+
+      </div>
+
+      <!-- RIGHT: quiz -->
+      <div class="quiz-col">
+        <div class="quiz-card">
+          <div class="quiz-head">
+            <div class="quiz-kicker">Free candidacy quiz</div>
+            <div class="quiz-title">See if the nuVIVE Pelvic Floor Reset is right for you</div>
+            <div class="quiz-meta">
+              <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg>
+              7 quick questions · under 60 seconds · 100% confidential
+            </div>
+          </div>
+          <div class="progress"><div class="bar" id="bar"></div></div>
+          <div class="step-count" id="stepCount">Question 1 of 7</div>
+
+          <div class="quiz-body" id="quizBody">
+
+            <!-- Q1 -->
+            <div class="step active" data-step="1" data-type="single">
+              <div class="q">Which sounds most like you right now?</div>
+              <div class="q-help">Pick the one that fits best.</div>
+              <div class="opts">
+                <button class="opt" onclick="pick(this)"><span class="box"><svg viewBox="0 0 24 24"><path d="M20 6L9 17l-5-5"/></svg></span>Leaks when I cough, laugh, sneeze or work out</button>
+                <button class="opt" onclick="pick(this)"><span class="box"><svg viewBox="0 0 24 24"><path d="M20 6L9 17l-5-5"/></svg></span>Sudden urges — I'm running to the bathroom often</button>
+                <button class="opt" onclick="pick(this)"><span class="box"><svg viewBox="0 0 24 24"><path d="M20 6L9 17l-5-5"/></svg></span>A little of both</button>
+                <button class="opt" onclick="pick(this)"><span class="box"><svg viewBox="0 0 24 24"><path d="M20 6L9 17l-5-5"/></svg></span>More of a looseness or weakness "down there"</button>
+              </div>
+            </div>
+
+            <!-- Q2 · AGITATE (multi) -->
+            <div class="step" data-step="2" data-type="multi">
+              <div class="q">What bothers you most about it?</div>
+              <div class="q-help">Select all that apply.</div>
+              <div class="opts">
+                <button class="opt" onclick="pickMulti(this)"><span class="box"><svg viewBox="0 0 24 24"><path d="M20 6L9 17l-5-5"/></svg></span>The worry it'll happen in public</button>
+                <button class="opt" onclick="pickMulti(this)"><span class="box"><svg viewBox="0 0 24 24"><path d="M20 6L9 17l-5-5"/></svg></span>Skipping workouts or activities I love</button>
+                <button class="opt" onclick="pickMulti(this)"><span class="box"><svg viewBox="0 0 24 24"><path d="M20 6L9 17l-5-5"/></svg></span>Feeling older than I actually am</button>
+                <button class="opt" onclick="pickMulti(this)"><span class="box"><svg viewBox="0 0 24 24"><path d="M20 6L9 17l-5-5"/></svg></span>How it affects intimacy or confidence</button>
+                <button class="opt" onclick="pickMulti(this)"><span class="box"><svg viewBox="0 0 24 24"><path d="M20 6L9 17l-5-5"/></svg></span>Always needing a bathroom nearby</button>
+              </div>
+              <div class="multi-hint">Choose any that apply, then continue</div>
+            </div>
+
+            <!-- Q3 · AMPLIFY (multi) -->
+            <div class="step" data-step="3" data-type="multi">
+              <div class="q">What have you tried so far?</div>
+              <div class="q-help">Select all that apply.</div>
+              <div class="opts">
+                <button class="opt" onclick="pickMulti(this)"><span class="box"><svg viewBox="0 0 24 24"><path d="M20 6L9 17l-5-5"/></svg></span>Kegels — but they haven't done much</button>
+                <button class="opt" onclick="pickMulti(this)"><span class="box"><svg viewBox="0 0 24 24"><path d="M20 6L9 17l-5-5"/></svg></span>Pads or liners to manage it</button>
+                <button class="opt" onclick="pickMulti(this)"><span class="box"><svg viewBox="0 0 24 24"><path d="M20 6L9 17l-5-5"/></svg></span>Physical therapy</button>
+                <button class="opt onlyone" onclick="pickMulti(this,true)"><span class="box"><svg viewBox="0 0 24 24"><path d="M20 6L9 17l-5-5"/></svg></span>Nothing yet — not sure where to start</button>
+              </div>
+              <div class="multi-hint">Choose any that apply, then continue</div>
+            </div>
+
+            <!-- Q4 · FUTURE-PACE (single) -->
+            <div class="step" data-step="4" data-type="single">
+              <div class="q">If this were handled, what would you love most?</div>
+              <div class="q-help">Pick the one you want back most.</div>
+              <div class="opts">
+                <button class="opt" data-echo="move and laugh without a second thought" onclick="pick(this)"><span class="box"><svg viewBox="0 0 24 24"><path d="M20 6L9 17l-5-5"/></svg></span>To laugh, sneeze and move without a second thought</button>
+                <button class="opt" data-echo="get back to the workouts you love" onclick="pick(this)"><span class="box"><svg viewBox="0 0 24 24"><path d="M20 6L9 17l-5-5"/></svg></span>To get back to the workouts I love</button>
+                <button class="opt" data-echo="feel confident and close with your partner again" onclick="pick(this)"><span class="box"><svg viewBox="0 0 24 24"><path d="M20 6L9 17l-5-5"/></svg></span>To feel confident and close with my partner again</button>
+                <button class="opt" data-echo="ditch the pads for good" onclick="pick(this)"><span class="box"><svg viewBox="0 0 24 24"><path d="M20 6L9 17l-5-5"/></svg></span>To ditch the pads and stop thinking about it</button>
+              </div>
+            </div>
+
+            <!-- Q5 · QUALIFY age (single) -->
+            <div class="step" data-step="5" data-type="single">
+              <div class="q">Which age range are you in?</div>
+              <div class="q-help">Helps us tailor your plan.</div>
+              <div class="opts">
+                <button class="opt" onclick="pick(this)"><span class="box"><svg viewBox="0 0 24 24"><path d="M20 6L9 17l-5-5"/></svg></span>Under 35</button>
+                <button class="opt" onclick="pick(this)"><span class="box"><svg viewBox="0 0 24 24"><path d="M20 6L9 17l-5-5"/></svg></span>35–44</button>
+                <button class="opt" onclick="pick(this)"><span class="box"><svg viewBox="0 0 24 24"><path d="M20 6L9 17l-5-5"/></svg></span>45–54</button>
+                <button class="opt" onclick="pick(this)"><span class="box"><svg viewBox="0 0 24 24"><path d="M20 6L9 17l-5-5"/></svg></span>55 or better</button>
+              </div>
+            </div>
+
+            <!-- Q6 · READINESS (single) -->
+            <div class="step" data-step="6" data-type="single">
+              <div class="q">How ready are you to finally take care of this?</div>
+              <div class="q-help">Be honest — there's no wrong answer.</div>
+              <div class="opts">
+                <button class="opt" onclick="pick(this)"><span class="box"><svg viewBox="0 0 24 24"><path d="M20 6L9 17l-5-5"/></svg></span>I'm ready to start soon</button>
+                <button class="opt" onclick="pick(this)"><span class="box"><svg viewBox="0 0 24 24"><path d="M20 6L9 17l-5-5"/></svg></span>Pretty ready — exploring my options</button>
+                <button class="opt" onclick="pick(this)"><span class="box"><svg viewBox="0 0 24 24"><path d="M20 6L9 17l-5-5"/></svg></span>Just curious for now</button>
+              </div>
+            </div>
+
+            <!-- Q7 · SAFETY SCREEN (multi) -->
+            <div class="step" data-step="7" data-type="multi">
+              <div class="q">Last one — do any of these apply to you?</div>
+              <div class="q-help">This keeps your treatment safe. Select all that apply, or "None of these."</div>
+              <div class="opts">
+                <button class="opt" onclick="pickMulti(this)"><span class="box"><svg viewBox="0 0 24 24"><path d="M20 6L9 17l-5-5"/></svg></span>I have a pacemaker or defibrillator</button>
+                <button class="opt" onclick="pickMulti(this)"><span class="box"><svg viewBox="0 0 24 24"><path d="M20 6L9 17l-5-5"/></svg></span>Metal implant in my hip/pelvic area, or a copper IUD</button>
+                <button class="opt" onclick="pickMulti(this)"><span class="box"><svg viewBox="0 0 24 24"><path d="M20 6L9 17l-5-5"/></svg></span>I am pregnant or may be pregnant</button>
+                <button class="opt onlyone" onclick="pickMulti(this,true)"><span class="box"><svg viewBox="0 0 24 24"><path d="M20 6L9 17l-5-5"/></svg></span>None of these</button>
+              </div>
+              <div class="multi-hint">Select all that apply, then see your results</div>
+            </div>
+
+            <!-- RESULTS / BOOKING -->
+            <div class="step" data-step="8" data-type="result">
+              <div class="result-badge"><svg viewBox="0 0 24 24"><path d="M20 6L9 17l-5-5"/></svg> You're a strong candidate</div>
+              <div class="q">Good news — you're a great fit for the nuVIVE Pelvic Floor Reset.</div>
+              <div class="q-help">You told us you'd love to <span id="rGoal">feel like yourself again</span> — and based on your answers, that's exactly what nuVIVE is built for. Here's the smartest way to start.</div>
+
+              <!-- value stack -->
+              <div class="sell">
+                <div class="sell-head">Your first session at Sano — <b>just $99</b></div>
+                <p class="sell-lead">One visit to feel the difference for yourself, before you ever commit to a full plan. In about 28 minutes you'll get:</p>
+                <div class="incl">
+                  <div class="chk"><span class="ck"><svg viewBox="0 0 24 24"><path d="M20 6L9 17l-5-5"/></svg></span>A private consult with the Sano clinical team to map your goals</div>
+                  <div class="chk"><span class="ck"><svg viewBox="0 0 24 24"><path d="M20 6L9 17l-5-5"/></svg></span>A full 28-minute nuVIVE session — fully clothed, no downtime</div>
+                  <div class="chk"><span class="ck"><svg viewBox="0 0 24 24"><path d="M20 6L9 17l-5-5"/></svg></span>Your personalized plan &amp; candidacy confirmation from our team</div>
+                  <div class="chk"><span class="ck"><svg viewBox="0 0 24 24"><path d="M20 6L9 17l-5-5"/></svg></span>Your $99 credited toward your program if you continue</div>
+                </div>
+              </div>
+
+              <div class="offer-box">
+                <div class="price"><s>$250</s>$99 <small>first session</small></div>
+                <div class="oline">Limited new-client spots this month · no obligation to continue</div>
+              </div>
+
+              <!-- Replace with: <div class="calendly-inline-widget" data-url="https://calendly.com/USERNAME/99-first-session" style="min-width:100%;height:680px;"></div> + widget script. Calendar collects name/email/phone + $99 payment here. -->
+              <div class="calendly-placeholder">
+                <b>Booking calendar loads here</b>
+                Embed your GoHighLevel / Calendly calendar + Stripe $99 checkout so she picks a time, enters her details, and pays in one step.
+              </div>
+
+              <button class="pay-cta" onclick="alert('Connect this to your GHL/Calendly + Stripe $99 checkout.')">Claim my $99 first session →</button>
+
+              <div class="reassure">
+                <span><svg viewBox="0 0 24 24"><path d="M20 6L9 17l-5-5"/></svg> Secure checkout</span>
+                <span><svg viewBox="0 0 24 24"><path d="M20 6L9 17l-5-5"/></svg> Credited to your plan</span>
+                <span><svg viewBox="0 0 24 24"><path d="M20 6L9 17l-5-5"/></svg> Reschedule anytime</span>
+              </div>
+            </div>
+
+            <!-- NOT-A-FIT (safety fail) -->
+            <div class="step" data-step="9" data-type="softno">
+              <div class="q">Let's have a quick chat first.</div>
+              <div class="q-help">A couple of your answers mean we'd want our medical team to review your fit before booking — that's completely normal, and it's how we keep every session safe. Book a quick, free call and a Sano care coordinator will talk through your options personally.</div>
+              <button class="pay-cta" style="animation:none;background:var(--brand-plum);color:#fff" onclick="alert('Route to a free consult-call calendar / contact form — no payment for this path.')">Book my free consult call →</button>
+              <div class="calendly-placeholder" style="margin-top:14px"><b>Consult-call calendar loads here</b>Route these leads to a free "speak to the team" call (collect name + phone) instead of instant pay.</div>
+            </div>
+
+            <!-- NAV -->
+            <div class="quiz-nav">
+              <button class="back-btn" id="backBtn" onclick="back()"><svg viewBox="0 0 24 24"><path d="M15 18l-6-6 6-6"/></svg> Back</button>
+              <button class="next-btn" id="nextBtn" onclick="next()" style="display:none">Continue <svg viewBox="0 0 24 24"><path d="M9 18l6-6-6-6"/></svg></button>
+            </div>
+
+          </div>
+        </div>
+      </div>
+  </div>
+</section>
+
+<!-- ================= CANDIDACY ================= -->
+<section class="cand">
+  <div class="wrap">
+    <div class="cand-grid">
+      <div class="cand-box good">
+        <h3><span class="ic"><svg viewBox="0 0 24 24"><path d="M20 6L9 17l-5-5"/></svg></span>This is likely for you if…</h3>
+        <ul>
+          <li>You've had children and don't feel quite the same</li>
+          <li>Menopause has changed your control or comfort</li>
+          <li>Bladder control gets in the way of workouts or laughing freely</li>
+          <li>Intimacy or confidence isn't what it used to be</li>
+          <li>You want real results without surgery or medication</li>
+        </ul>
+      </div>
+      <div class="cand-box no">
+        <h3><span class="ic"><svg viewBox="0 0 24 24"><path d="M18 6L6 18M6 6l12 12"/></svg></span>Let's talk first if…</h3>
+        <ul>
+          <li>You have a pacemaker or defibrillator</li>
+          <li>You have a metal implant in the pelvic area or a copper IUD</li>
+          <li>You are pregnant or may be pregnant</li>
+          <li>You have active pelvic pain or a diagnosed condition</li>
+          <li>Our medical team will review the right path for you</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= FAQ ================= -->
+<section class="faq">
+  <div class="wrap">
+    <h2>Questions women ask us</h2>
+    <div class="faq-list">
+      <div class="faq-item"><div class="faq-q" onclick="tog(this)">Does it hurt? What does it feel like?<svg viewBox="0 0 24 24"><path d="M12 5v14M5 12h14"/></svg></div><div class="faq-a"><p>Most women describe it as a gentle tingling or tapping sensation. You stay fully clothed and comfortable the entire time — many relax, read, or scroll their phone.</p></div></div>
+      <div class="faq-item"><div class="faq-q" onclick="tog(this)">Do I have to undress?<svg viewBox="0 0 24 24"><path d="M12 5v14M5 12h14"/></svg></div><div class="faq-a"><p>No. You remain fully clothed for the entire session. It's private, comfortable, and there's no exam involved.</p></div></div>
+      <div class="faq-item"><div class="faq-q" onclick="tog(this)">How many sessions will I need?<svg viewBox="0 0 24 24"><path d="M12 5v14M5 12h14"/></svg></div><div class="faq-a"><p>Your $99 first session is designed for you to experience the treatment. Most women choose a short series to build and maintain results — your provider will map out a personalized plan at your visit.</p></div></div>
+      <div class="faq-item"><div class="faq-q" onclick="tog(this)">Is this only for bladder leaks?<svg viewBox="0 0 24 24"><path d="M12 5v14M5 12h14"/></svg></div><div class="faq-a"><p>No. The same deep pelvic floor muscles support bladder control, core stability, and intimacy — so women come to us for confidence and comfort as much as for control. Your provider will tailor the plan to your goals.</p></div></div>
+      <div class="faq-item"><div class="faq-q" onclick="tog(this)">What makes nuVIVE different?<svg viewBox="0 0 24 24"><path d="M12 5v14M5 12h14"/></svg></div><div class="faq-a"><p>nuVIVE delivers 7 Tesla of focused energy — the most powerful pelvic floor technology available — for deeper muscle activation than standard chairs, in the same comfortable 28-minute session.</p></div></div>
+      <div class="faq-item"><div class="faq-q" onclick="tog(this)">Is it safe? Who oversees it?<svg viewBox="0 0 24 24"><path d="M12 5v14M5 12h14"/></svg></div><div class="faq-a"><p>Treatments at Sano are overseen by our Medical Director, Dr. Andrew Mahtani, MD, and delivered by our clinical team with 90+ years of combined experience. The quiz screens for the few situations where we'd want to talk first.</p></div></div>
+      <div class="faq-item"><div class="faq-q" onclick="tog(this)">What's the $99 first session?<svg viewBox="0 0 24 24"><path d="M12 5v14M5 12h14"/></svg></div><div class="faq-a"><p>It's a limited new-client intro so you can experience the treatment for yourself before committing to a plan. If you continue, your $99 is credited toward your package. Spots are limited each month.</p></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= FINAL CTA ================= -->
+<section class="final">
+  <div class="wrap">
+    <h2>It's your turn to feel like yourself again.</h2>
+    <p>Take the 60-second quiz, reserve your $99 first session, and see what thousands of Kegels in 28 minutes can do.</p>
+    <button class="btn" onclick="window.scrollTo({top:0,behavior:'smooth'})">See if I qualify →</button>
+    <div class="tiny">Sano Med Spa · 314 Fountains Pkwy, Suite D, Fairview Heights, IL · (618) 661-0001</div>
+  </div>
+</section>
+
+<footer class="ft">
+  <div class="wrap">
+    <b>Sano Med Spa</b><br>
+    Metro-East St. Louis' Premiere Med Spa · Fairview Heights, IL
+    <div class="disc">Individual results vary. This treatment is not a substitute for medical diagnosis or care. Candidacy is determined at your appointment by the Sano clinical team. Not intended to diagnose, treat, cure, or prevent any disease.</div>
+  </div>
+</footer>
+
+<script>
+/* ---------- QUIZ ENGINE ---------- */
+let step=1;                     // current visible step index (1-based over DOM .step)
+const TOTAL_Q=7;                // number of quiz questions (last one = safety screen)
+const answers={};
+const steps=[...document.querySelectorAll('.step')];
+const bar=document.getElementById('bar');
+const stepCount=document.getElementById('stepCount');
+const backBtn=document.getElementById('backBtn');
+const nextBtn=document.getElementById('nextBtn');
+let safetyFail=false;
+
+function show(n){
+  steps.forEach(s=>s.classList.remove('active'));
+  const el=steps.find(s=>+s.dataset.step===n);
+  el.classList.add('active');
+  step=n;
+  const type=el.dataset.type;
+
+  // progress + counter
+  if(n<=TOTAL_Q){
+    bar.style.width=((n-1)/TOTAL_Q*88+12)+'%';
+    stepCount.textContent='Question '+n+' of '+TOTAL_Q;
+    stepCount.style.display='block';
+  }else{
+    bar.style.width='100%';stepCount.style.display='none';
+  }
+
+  // back button visible after Q1, only during questions
+  backBtn.style.visibility=(n>1 && n<=TOTAL_Q)?'visible':'hidden';
+
+  // next button only for multi-select questions
+  if(type==='multi'){nextBtn.style.display='inline-flex';nextBtn.textContent='Continue';syncNext(el);}
+  else{nextBtn.style.display='none';}
+
+  // echo her future-pace answer into the results copy
+  if(type==='result'){const g=document.getElementById('rGoal');if(g)g.textContent=answers.goal||'feel like yourself again';}
+
+  // keep the quiz in view without yanking the page to the top ('nearest' is a no-op when already visible)
+  const card=document.querySelector('.quiz-card');
+  if(card) card.scrollIntoView({behavior:'smooth',block:'nearest'});
+}
+
+/* single select auto-advance */
+function pick(btn){
+  const parent=btn.closest('.step');
+  parent.querySelectorAll('.opt').forEach(o=>o.classList.remove('sel'));
+  btn.classList.add('sel');
+  answers['q'+parent.dataset.step]=btn.textContent.trim();
+  if(btn.dataset.echo) answers.goal=btn.dataset.echo;   // future-pace answer for dynamic results
+  setTimeout(()=>next(),420);
+}
+
+/* multi select */
+function pickMulti(btn,isNone){
+  const parent=btn.closest('.step');
+  if(isNone){parent.querySelectorAll('.opt').forEach(o=>o.classList.remove('sel'));btn.classList.add('sel');}
+  else{const none=parent.querySelector('.onlyone');if(none)none.classList.remove('sel');btn.classList.toggle('sel');}
+  syncNext(parent);
+}
+function syncNext(parent){
+  const any=parent.querySelectorAll('.opt.sel').length>0;
+  nextBtn.disabled=!any;
+}
+
+function next(){
+  const el=steps.find(s=>+s.dataset.step===step);
+  const type=el.dataset.type;
+
+  // record multi answers + safety check
+  if(type==='multi'){
+    const sel=[...el.querySelectorAll('.opt.sel')].map(o=>o.textContent.trim());
+    answers['q'+step]=sel;
+    if(step===7){ // safety screen
+      safetyFail = sel.some(s=>!/None of these/i.test(s));
+    }
+  }
+
+  // after the last question, branch straight to the offer (or consult path)
+  if(step===7){ show(safetyFail?9:8); return; }
+  if(step<7){ show(step+1); }
+}
+
+function back(){
+  if(step>1 && step<=7) show(step-1);
+}
+
+/* FAQ */
+function tog(q){q.parentElement.classList.toggle('open');}
+
+show(1);
+</script>
+</body>
+</html>
